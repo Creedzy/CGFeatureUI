@@ -1,0 +1,10 @@
+node_modules
+dist
+.tmp
+.src
+.sass-cache
+.idea
+test/reports
+docs/ng-docs
+docs/**/~$*.*
+components/bower
