@@ -1,0 +1,59 @@
+
+<div class="container">
+    <div id="signup">
+        <div class="signup-screen">
+            <div class="space-bot text-center">
+                <h1>Sign up</h1>
+                <div class="divider"></div>
+            </div>
+            < id ="registerForm" name="registerForm" ng-submit="submitForm()"  validate>
+                <div class="input-field col s6">
+                    <input id="first-name" name="firstName" ng-model="user.firstName" type="text" class="validate" required>
+                    <label for="first-name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last-name" name="lastName" ng-model="user.lastName" type="text" class="validate" required>
+                    <label for="last-name">Last Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="username" type="text" name="username" ng-model="user.username" class="validate" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="email" type="email" name="email" ng-model="user.email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <p class="alert alert-danger" ng-show="registerForm.email.$error.email">Your email is invalid.</p>
+                <div class="input-field col s6">
+                    <input id="password" type="password" name="password" ng-model="user.password" ng-minlength='6' class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+                <p class="alert alert-danger" ng-show="registerForm.password.$error.minlength || form.password.$invalid">Your password must be at least 6 characters.</p>
+               <div>
+                   <input id="contactPreference" type="checkbox" name="contactPreference" ng-model="user.contactPreference" value="email" checked>
+                   <label for="contactPreference">Receive System Emails</label>
+               </div>
+
+                <div  vc-recaptcha
+                      key="'6LfOiiYUAAAAABiEg0pq577dRYy8L2QlfDMhvCEc'"
+                        ng-model="user.myRecaptchaResponse"
+                      theme="dark"></div>
+                <p class="alert alert-danger" ng-show="recaptchaInvalid">Please validate the recaptcha.</p>
+                <div class="space-top text-center">
+                    <button ng-disabled="registerForm.$invalid" class="waves-effect waves-light btn done">
+                        <i class="material-icons left">done</i> Done
+                    </button>
+                    <button type="button" class="waves-effect waves-light btn cancel">
+                        <i class="material-icons left">clear</i>Cancel
+                    </button>
+                </div>
+                <div>
+                    <p class="alert alert-success" ng-show="successfulRegistration">Your Registration was completed successfully. Please confirm your email address</p>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
