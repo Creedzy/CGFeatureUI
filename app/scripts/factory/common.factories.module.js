@@ -2,7 +2,7 @@
  * Created by nas on 6/3/2017.
  */
 
-'use strict';
+/* jshint -W097 */
 /**
  * @ngdoc overview
  * @name commonConfigModule

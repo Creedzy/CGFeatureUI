@@ -1,3 +1,4 @@
+/* jshint -W097 */
 'use strict';
 /**
  * @ngdoc overview
@@ -7,6 +8,8 @@
  *
  * Main module of the application.
  */
+
+
 angular
   .module('GC', [
     'oc.lazyLoad',
@@ -19,7 +22,7 @@ angular
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
     
     $ocLazyLoadProvider.config({
-      debug:false,
+      debug:true,
       events:true,
     });
 
@@ -34,12 +37,18 @@ angular
                 return $ocLazyLoad.load(
                 {
                     name:'GC',
-                    files:[
+                    files:[               
                     'scripts/directives/header/header.js',
                     'scripts/directives/header/header-notification/header-notification.js',
                     'scripts/directives/sidebar/sidebar.js',
                     'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
                     ]
+                }),
+                $ocLazyLoad.load({
+                   name:'commonFactoriesModule',
+                   files:['scripts/factory/common.factories.module.js'
+
+                   ]
                 }),
                 $ocLazyLoad.load(
                 {
@@ -85,7 +94,7 @@ angular
             return $ocLazyLoad.load({
               name:'GC',
               files:[
-
+              'scripts/factory/RestRequest.js',
               'scripts/directives/timeline/timeline.js',
               'scripts/directives/notifications/notifications.js',
               'scripts/directives/chat/chat.js',

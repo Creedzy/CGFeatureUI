@@ -1,11 +1,12 @@
+/* jshint -W097 */
+'use strict';
 /**
  * Created by nas on 11/21/2016.
  */
 
-/* jshint -W097 */
-'use strict';
+
 angular.module('commonFactoriesModule')
-    .factory('UserFactory', ['$q', '$http', 'RestRequestFactory', function ($q, $http, RestRequest) {
+    .factory('UserFactory', ['$q', '$http', 'RestRequestFactory', function ($q, $http, RestRequestFactory) {
 
         function User(id) {
 
@@ -31,18 +32,18 @@ angular.module('commonFactoriesModule')
 
             };
 
-            this.init(data);
+           
 
-        }
+        
 
 
-        this.loginRequest = RestRequest('/login');
+        this.loginRequest = new RestRequestFactory('/login');
         this.login = function (mail, passwrd) {
             var data = {
                 username: mail,
                 password: passwrd
             };
-            var promise = loginRequest.post(data);
+            var promise = this.loginRequest.post(data);
             promise
                 .then(function (data) {
                 console.log('login success');
@@ -55,9 +56,9 @@ angular.module('commonFactoriesModule')
         };
 
 
-        this.logoutRequest = RestRequest('/logout');
+        this.logoutRequest = new RestRequestFactory('/logout');
         this.logout = function () {
-            var promise = logoutRequest.get();
+            var promise = this.logoutRequest.get();
             promise
                 .then(function (data) {
                 console.log('logout success');
@@ -69,10 +70,10 @@ angular.module('commonFactoriesModule')
             return promise;
         };
 
-        this.getUserRequest = RestRequest('/CC/User/');
+        this.getUserRequest = new RestRequestFactory('/CC/User/');
         this.getUser = function (userId) {
             var deferred = $q.defer();
-            var promise = getUserRequest.get(userId);
+            var promise = this.getUserRequest.get(userId);
             promise
                 .then(function (data) {
                 console.log('logged in user  success');
@@ -86,7 +87,7 @@ angular.module('commonFactoriesModule')
             return deferred.promise;
         };
 
-
+    }
         return User;
 
     }]);

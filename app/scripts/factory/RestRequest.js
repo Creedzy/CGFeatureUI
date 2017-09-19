@@ -1,21 +1,23 @@
+/* jshint -W097 */
+'use strict';
 /**
  * Created by nas on 9/11/2017.
  */
 
-/* jshint -W097 */
-'use strict';
+
+
 angular.module('commonFactoriesModule')
 
     .factory('RestRequestFactory', ['$q', '$http', function ($q, $http) {
 
         function RestRequest(url) {
 
-            this.url = url;
+            var url = url;
 
             this._doCall = function (method, data, multipart) {
 
                 var deferred = $q.defer();
-                var requestUrl = this.url;
+                var requestUrl = url;
                 if (data && (method == 'GET' || method == 'DELETE')) {
                     var params = $.param(data);
                     if (requestUrl.indexOf('?') > -1) {
@@ -123,10 +125,8 @@ angular.module('commonFactoriesModule')
                 }
             };
 
-        }
+        };
 
         return RestRequest;
 
-    }
-
-    ]);
+    }]);

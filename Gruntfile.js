@@ -47,8 +47,12 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css',
+                '<%= yeoman.app %>/apps/*/*/{,*/}*.css'],
+        tasks: ['clean:styles','copy-app-styles','copy:styles','bower_concat:all'],
+        options: {
+              livereload: false
+        }
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -133,6 +137,16 @@ module.exports = function (grunt) {
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*',
             '!<%= yeoman.dist %>/.git*'
+          ]
+        }]
+      },
+      styles: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= yeoman.dist %>/styles/{,*/}*',
+ 
           ]
         }]
       },
@@ -375,7 +389,7 @@ module.exports = function (grunt) {
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
-        dest: '.tmp/styles/',
+        dest: '<%= yeoman.dist %>/styles/',
         src: '{,*/}*.css'
       }
     },
@@ -495,9 +509,8 @@ module.exports = function (grunt) {
     grunt.config.set('concat.all', {
       // Modules first, then everything else
       src: [
-        '<%= yeoman.dist %>/scripts/*.js',
         '<%= yeoman.dist %>/scripts/**/*.js',
-
+        '<%= yeoman.dist %>/scripts/*.js',
         '<%= yeoman.dist %>/js/*.js'
 
       ],

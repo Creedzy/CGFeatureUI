@@ -1,18 +1,33 @@
+/* jshint -W097 */
+'use strict';
 /**
  * Created by nas on 12/5/2016.
  */
-angular.module('loginApp').controller('LoginMainController',['$scope','UserFactory',function ($scope,User){
 
+
+angular.module('loginApp').controller('LoginMainController',['$scope','UserFactory',function ($scope,UserFactory){ 
+    console.log(angular.module('commonFactoriesModule'));
     $scope.vars = {};
+    $scope.forms = {};
     $scope.vars.username = null;
     $scope.vars.password = null;
-
+    $scope.vars.error = null;
     $scope.login = function () {
+        
         if($scope.forms.loginPassword.password.$valid && $scope.forms.loginPassword.username.$valid) {
-            $scope.vars.user = new User($scope.vars.username);
+            console.log('valid');
+            var user = new UserFactory($scope.vars.username);
+            $scope.vars.user = user;
+            user.login()
+            .then(function () {
+            console.log('success');
+            },function () {
+            console.log('fail');
+            $scope.vars.error = true;
+            });
+        } else {
+            console.log('invalid');
         }
-
-
     };
 
 

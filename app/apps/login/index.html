@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
-
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/sb-admin-2.css">
+    <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/timeline.css">
     <link rel="stylesheet" href="/bower_components/metisMenu/dist/metisMenu.min.css">
     <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.min.css">
@@ -40,8 +40,8 @@
     <script src="/scripts/scripts.js"></script>
     <!-- endbuild -->
 </head>
-<body ng-app="loginApp">
-
+<body ng-app="loginApp" ng-controller="LoginMainController">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js'></script>      
 <div >
 
     <div ui-view=""></div>

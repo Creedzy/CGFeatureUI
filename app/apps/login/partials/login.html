@@ -1,40 +1,59 @@
-
-
-
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="login-panel panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Please Sign In</h3>
-                </div>
-                <div class="panel-body">
-                    <form  data-ng-submit="login()" name="forms.loginPassword">
-                        <fieldset>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Username" data-ng-model="vars.username" required name="username" type="email" autofocus>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control"  data-ng-model="vars.password" placeholder="Password" name="password" type="password" value="">
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
-                        </fieldset>
-                    </form>
-                    <a href="/user/registration"> <span> Create Account </span></a>
-                </div>
-                <div class="panel-body">
-                <h> Sign In using Social Provider</h>
+        <div class="col-md-6 col-md-offset-3">
 
-                    <a href="/auth?provider=facebook"><button class="btn btn-facebook">Facebook</button></a>
-
-                    <a href="/auth?provider=google"><button class="btn btn-facebook">Google</button></a>
+            <div class="signin-screen pull-right">
+                <div class="space-bot text-center">
+                    <h1>Sign In</h1>
+                    <div class="divider"></div>
                 </div>
+                <form data-ng-submit="login()" name="forms.loginPassword" novalidate>
+                    <p class="alert alert-danger" ng-show="vars.error">Invalid username or password</p>
+                    <div class="input-field col-md-12">
+                        <input id="username" name="username" ng-model="vars.username" type="email" class="validate" required autofocus>
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-field col-md-12">
+                        <input id="password" class="validate" data-ng-model="vars.password" name="password" type="password" value="">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="rememberMe" type="checkbox" name="rememberMe" ng-model="user.rememberMe" value="true" checked>
+                        <label for="rememberMe">Remember Me</label>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="waves-effect waves-light btn btn-block">
+                            <i class="material-icons right">send</i> Login
+                        </button>
+                    </div>                 
+                </form>
+                <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                        <span>Not a user yet? </span><a href="/user/registration"> <span> Create Account </span></a>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        <a class="pull-right" href="/user/registration"> <span> Forgotten Password? </span></a>
+                    </div>
+                </div>
+                <div class="row">
+                      
+                   
+                    <div class="col-xs-12 col-md-12">
+                        <h1 class="text-center center-block"> Sign In using Social Provider</h1>
+                        <div class="row">
+                                <div class="col-xs-6 col-md-6"> 
+                                        <a href="/auth?provider=facebook"><button class="loginBtn loginBtn--facebook">Login with Facebook</button></a>
+                                </div>
+                                <div class="col-xs-6 col-md-6">
+                                         <a href="/auth?provider=google"><button class="loginBtn loginBtn--google">Sign in with Google</button></a>
+                                </div>
+                        </div>
+                    </div>
+                   
+                </div>
+              
             </div>
+
         </div>
     </div>
 </div>

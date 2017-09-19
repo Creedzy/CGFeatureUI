@@ -4,6 +4,7 @@ dist
 .src
 .sass-cache
 .idea
+bower_components
 test/reports
 docs/ng-docs
 docs/**/~$*.*
