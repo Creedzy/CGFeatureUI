@@ -1,5 +1,7 @@
 node_modules
 dist
+log.txt
+npm-debug.log
 .tmp
 .src
 .sass-cache
