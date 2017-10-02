@@ -18,7 +18,7 @@ angular.module('loginApp').controller('LoginMainController',['$scope','UserFacto
             console.log('valid');
             var user = new UserFactory($scope.vars.username);
             $scope.vars.user = user;
-            user.login()
+            user.login($scope.vars.username,$scope.vars.password)
             .then(function () {
             console.log('success');
             },function () {

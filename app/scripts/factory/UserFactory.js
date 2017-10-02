@@ -37,19 +37,18 @@ angular.module('commonFactoriesModule')
         
 
 
-        this.loginRequest = new RestRequestFactory('/login');
+        this.loginRequest = new RestRequestFactory('/login/authenticate');
         this.login = function (mail, passwrd) {
             var data = {
-                username: mail,
-                password: passwrd
+                'username': mail,
+                'password': passwrd
             };
+            console.log(data);
             var promise = this.loginRequest.post(data);
             promise
                 .then(function (data) {
-                console.log('login success');
 
             }, function (error) {
-                console.log('login failed');
 
             });
             return promise;
