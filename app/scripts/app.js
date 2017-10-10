@@ -16,8 +16,7 @@ angular
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
-        'commonFactoriesModule',
-        'loginApp'
+        'commonFactoriesModule'
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
     

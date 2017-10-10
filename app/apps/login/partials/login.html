@@ -8,7 +8,7 @@
                     <div class="divider"></div>
                 </div>
                 <form data-ng-submit="login()" name="forms.loginPassword" novalidate>
-                    <p class="alert alert-danger" ng-show="vars.error">Invalid username or password</p>
+                    <p class="alert alert-danger" ng-show="vars.error" ng-model="vars.errormessage">Invalid username or password</p>
                     <div class="input-field col-md-12">
                         <input id="username" name="username" ng-model="vars.username" type="email" class="validate" required autofocus>
                         <label for="username">Username</label>

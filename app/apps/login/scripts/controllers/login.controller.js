@@ -12,6 +12,7 @@ angular.module('loginApp').controller('LoginMainController',['$scope','UserFacto
     $scope.vars.username = null;
     $scope.vars.password = null;
     $scope.vars.error = null;
+    $scope.vars.errormessage = null;
     $scope.login = function () {
         
         if($scope.forms.loginPassword.password.$valid && $scope.forms.loginPassword.username.$valid) {
@@ -21,9 +22,11 @@ angular.module('loginApp').controller('LoginMainController',['$scope','UserFacto
             user.login($scope.vars.username,$scope.vars.password)
             .then(function () {
             console.log('success');
-            },function () {
+            window.location.reload(true);
+            },function (data) {
             console.log('fail');
             $scope.vars.error = true;
+            $scope.vars.errormessage = data.errormessage;
             });
         } else {
             console.log('invalid');
